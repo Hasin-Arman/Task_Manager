@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block body %}
+<h1 class="text-center">All Tasks</h1>
+<div class="container">
+  <div class ="row mt-3">
+    <div class="col-md-2">
+      <h2>Filter Task</h2>
+      <ul>
+        <li><a href="{% url "priority" 'low' %}">Low</a></li>
+        <li><a href="{% url "priority" 'medium' %}">Medium</a></li>
+        <li><a href="{% url "priority" 'high' %}">High</a></li>
+        <li><a href="{% url "task_complete" %}">completed</a></li>
+      </ul>
+    </div>
+      <div class="col-md-10">
+        {% if tasks %}
+  <table class="table table-bordered w-75 m-auto mt-4">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Task</th>
+          <th scope="col">priority</th>
+          <th scope="col">Creation Date</th>
+          <th scope="col">Due Date</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+          {% for task in tasks %}
+          <tr>
+              <td>{{task.id}}</td>
+              <td><a href="{% url "details" task.id %}">{{task.title}}</a></td>
+              <td>{{task.priority}}</td>
+              <td>{{task.creation_date}}</td>
+              <td>{{task.due_date}}</td>
+              <td>{{task.is_complete}}</td>
+            </tr>
+          {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <h1 class="text-center ">No data availabe</h1>
+  {% endif %}
+      </div>
+  </div>
+</div>
+
+{% endblock %}

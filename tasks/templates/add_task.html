@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="w-50 m-auto">
+    <h1 class="text-center">Add Task Form</h1>
+    <br>
+ <div class="d-flex justify-content-center">
+    <form method="POST" enctype='multipart/form-data'>
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="btn btn-info" type="submit">Submit</button>
+    </form>
+ </div>
+</div>
+{% endblock %}

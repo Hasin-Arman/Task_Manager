@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block body %}
+<section class="section-intro padding-y-sm">
+	<!-- ========================= SECTION MAIN END// ========================= -->
+	
+	<!-- ========================= SECTION  ========================= -->
+	<section class="section-name padding-y-sm">
+	<div class="container">
+	<header class="section-heading">
+		<h3 class="section-title"></h3>
+	</header><!-- sect-heading -->
+	
+		
+	<div class="row">
+			<div class="card col-md-8 card-product-grid p-3">
+				<img src="{{task.photo.url}}">
+                <br>
+				<figcaption class="info-wrap">
+					{% if task.is_complete %}
+					<h4>Task:{{task.title}}</h4>
+					<h4>Description:{{task.description}}</h4>
+					<h4>Due Date:{{task.due_date}}</h4>
+					<h4>Priority:{{task.priority}}</h4>
+                    <a href="{% url "update" task.id %}"><button class="btn btn-info btn-sm">Update</button></a>
+                    <a href="{% url "delete" task.id %}"><button class="btn btn-info btn-sm">Delete</button></a>
+					{% else %}
+					<h4>Task:{{task.title}}</h4>
+					<h4>Description:{{task.description}}</h4>
+					<h4>Due Date:{{task.due_date}}</h4>
+					<h4>Priority:{{task.priority}}</h4>
+                    <a href="{% url "update" task.id %}"><button class="btn btn-info btn-sm">Update</button></a>
+                    <a href="{% url "delete" task.id %}"><button class="btn btn-info btn-sm">Delete</button></a>
+					<a href="{% url "complete" task.id %}"><button class="btn btn-info btn-sm">Complete</button></a>
+					{% endif %}
+                     <!-- price-wrap.// -->
+				</figcaption>
+			</div>
+	</div> <!-- row.// -->
+	</div><!-- container // -->
+	</section>
+{% endblock body %}
